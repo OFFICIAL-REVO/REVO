@@ -1,0 +1,27 @@
+import openai
+
+def generate_and_optimize_content(prompt, keywords):
+    """
+    This function generates content based on a given prompt and optimizes it by including relevant keywords for SEO.
+
+    """
+    openai.api_key = 'your_openai_api_key'
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=200,
+        temperature=0.7
+    )
+    content = response.choices[0].text.strip()
+
+    # SEO optimization: Add keywords if not already present
+    for keyword in keywords:
+        if keyword not in content:
+            content += f" {keyword}"
+    
+    return content
+
+prompt = "Write an article on the latest advancements in artificial intelligence."
+keywords = ["AI", "advancements", "technology", "future"]
+optimized_content = generate_and_optimize_content(prompt, keywords)
+print(optimized_content)
