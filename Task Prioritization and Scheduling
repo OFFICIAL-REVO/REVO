@@ -1,0 +1,30 @@
+import heapq
+
+class TaskScheduler:
+    def __init__(self):
+        self.task_queue = []
+    
+    def add_task(self, task, priority):
+        """
+        Adds a task to the scheduler with a specific priority.
+        """
+        heapq.heappush(self.task_queue, (priority, task))  # Lower number means higher priority
+    
+    def execute_tasks(self):
+        """
+        Executes tasks based on their priority.
+        """
+        while self.task_queue:
+            priority, task = heapq.heappop(self.task_queue)
+            print(f"Executing task: {task}")
+
+# Create a task scheduler instance
+scheduler = TaskScheduler()
+
+# Adding tasks with different priorities
+scheduler.add_task("Generate content", 1)
+scheduler.add_task("Optimize content for SEO", 3)
+scheduler.add_task("Translate content", 2)
+
+# Execute tasks in priority order
+scheduler.execute_tasks()
