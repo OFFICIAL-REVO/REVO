@@ -1,0 +1,26 @@
+import time
+
+class CollaborationSystem:
+    def __init__(self):
+        self.content = ""
+    
+    def update_content(self, new_content):
+        """
+        This method allows multiple collaborators to update the content in real-time.
+        """
+        self.content = new_content
+        print(f"Updated content: {self.content}")
+    
+    def share_content(self):
+        """
+        This method simulates content sharing with collaborators.
+        """
+        print(f"Sharing content: {self.content}")
+
+# Simulate real-time collaboration
+collaboration_system = CollaborationSystem()
+
+collaboration_system.update_content("AI is changing the world of work.")
+time.sleep(1)  # Simulate time delay
+collaboration_system.update_content("AI's potential is limitless.")
+collaboration_system.share_content
